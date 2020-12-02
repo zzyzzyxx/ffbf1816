@@ -51,5 +51,6 @@
     <string name="foodstalls">foodstalls</string>
     <string name="profil">profil</string>
     <string name="back">back</string>
+    <string name="submit">submit</string>
 
 </resources>

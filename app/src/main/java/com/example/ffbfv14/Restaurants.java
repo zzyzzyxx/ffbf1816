@@ -1,5 +1,5 @@
 package com.example.ffbfv14;
-
+// KLASA NIEUZYWANA, DO USUNIECIA
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;

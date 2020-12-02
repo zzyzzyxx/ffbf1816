@@ -1,6 +1,10 @@
 package com.example.ffbfv14;
 
-public class Eatery {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Eatery implements Parcelable
+{
     String name, desc, url;
 
     public Eatery(String name, String desc, String url) {
@@ -10,6 +14,24 @@ public class Eatery {
     }
 
     public Eatery() {}
+
+    protected Eatery(Parcel in) {
+        name = in.readString();
+        desc = in.readString();
+        url = in.readString();
+    }
+
+    public static final Creator<Eatery> CREATOR = new Creator<Eatery>() {
+        @Override
+        public Eatery createFromParcel(Parcel in) {
+            return new Eatery(in);
+        }
+
+        @Override
+        public Eatery[] newArray(int size) {
+            return new Eatery[size];
+        }
+    };
 
     public String getName() {
         return name;
@@ -25,4 +47,16 @@ public class Eatery {
     }
     public String getUrl() { return url; }
     public void setUrl(String url) { this.url = url; }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeString(desc);
+        dest.writeString(url);
+    }
 }

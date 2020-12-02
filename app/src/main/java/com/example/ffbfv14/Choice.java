@@ -25,10 +25,15 @@ public class Choice extends AppCompatActivity implements View.OnClickListener{
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.imBrest:
-                startActivity(new Intent(this,Restaurants.class));
+                Intent i = new Intent(this,Eaterylist.class);
+                // add
+                i.putExtra("type", "Restaurant");
+                startActivity(i);
                 break;
             case R.id.imBfood:
-                //startActivity(new Intent(this,RegistrationAndLogin.class));
+                Intent j = new Intent(this,Eaterylist.class);
+                j.putExtra("type", "Foodstall");
+                                startActivity(j);
                 break;
             case R.id.imBprofile:
                 startActivity(new Intent(this, ProfileActivity.class));

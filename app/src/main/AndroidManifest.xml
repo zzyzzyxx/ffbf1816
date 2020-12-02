@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FFBFv14">
-        <activity android:name=".RecyclerFoodstalls"></activity>
+        <activity android:name=".EateryDetail"></activity>
+        <activity android:name=".Eaterylist" />
+        <activity android:name=".RecyclerFoodstalls" />
         <activity android:name=".Restaurants" />
         <activity android:name=".Choice" />
         <activity android:name=".ForgotPassword" />
