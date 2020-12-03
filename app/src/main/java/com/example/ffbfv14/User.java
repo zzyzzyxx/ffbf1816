@@ -1,7 +1,10 @@
 package com.example.ffbfv14;
 
 public class User {
-    public String firstName, surname, email, type;
+    public String firstName;
+    public String surname;
+    public String email;
+    public String type;
 
     public User() { }
 

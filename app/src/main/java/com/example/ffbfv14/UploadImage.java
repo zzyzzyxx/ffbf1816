@@ -42,7 +42,7 @@ public class UploadImage extends AppCompatActivity {
             public void onClick(View v) {
                 DatabaseReference dbref = FirebaseDatabase.getInstance().getReference("_eateries_");
                 String id =  dbref.push().getKey();
-                StorageReference reference = sref.child(id);
+                StorageReference reference = sref.child(id + "." + getExtention(image_path));
                 reference.putFile(image_path).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -53,6 +53,7 @@ public class UploadImage extends AppCompatActivity {
                                 Intent i = new Intent(UploadImage.this, AddEatery.class);
                                 i.putExtra("URL", url);
                                 i.putExtra("PK", id);
+                                startActivity(i);
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
@@ -74,6 +75,8 @@ public class UploadImage extends AppCompatActivity {
         image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 Intent i = new Intent();
                 i.setType("image/*");
                 i.setAction(Intent.ACTION_GET_CONTENT);

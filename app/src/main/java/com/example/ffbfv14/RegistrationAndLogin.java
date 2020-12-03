@@ -108,6 +108,7 @@ public class RegistrationAndLogin extends AppCompatActivity implements View.OnCl
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             String type = "Standard User";
+                            //User user = new User(firstName, surname, email, url, type );
                             User user = new User(firstName, surname, email, type );
                             FirebaseDatabase.getInstance().getReference("Users")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())

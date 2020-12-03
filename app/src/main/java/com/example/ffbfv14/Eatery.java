@@ -5,13 +5,15 @@ import android.os.Parcelable;
 
 public class Eatery implements Parcelable
 {
-    String name, desc, url;
+    String name, desc, url, type;
 
-    public Eatery(String name, String desc, String url) {
+    public Eatery(String name, String desc, String url , String type) {
         this.name = name;
         this.desc = desc;
         this.url = url;
+        this.type = type;
     }
+
 
     public Eatery() {}
 
@@ -19,6 +21,7 @@ public class Eatery implements Parcelable
         name = in.readString();
         desc = in.readString();
         url = in.readString();
+        type = in.readString();
     }
 
     public static final Creator<Eatery> CREATOR = new Creator<Eatery>() {
@@ -32,6 +35,10 @@ public class Eatery implements Parcelable
             return new Eatery[size];
         }
     };
+
+    public static Creator<Eatery> getCREATOR() {
+        return CREATOR;
+    }
 
     public String getName() {
         return name;
@@ -47,6 +54,8 @@ public class Eatery implements Parcelable
     }
     public String getUrl() { return url; }
     public void setUrl(String url) { this.url = url; }
+    public String getType() { return type; }
+    public void setType(String type) { this.type = type; }
 
     @Override
     public int describeContents() {
@@ -58,5 +67,7 @@ public class Eatery implements Parcelable
         dest.writeString(name);
         dest.writeString(desc);
         dest.writeString(url);
+        dest.writeString(type);
     }
+
 }

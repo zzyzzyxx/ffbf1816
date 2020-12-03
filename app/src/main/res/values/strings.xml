@@ -52,5 +52,12 @@
     <string name="profil">profil</string>
     <string name="back">back</string>
     <string name="submit">submit</string>
+    <string name="left"><![CDATA[<<]]></string>
+    <string name="right"><![CDATA[>>]]></string>
+    <string name="textview">TextView</string>
+    <string name="eatery_image">eatery image</string>
+    <string name="image_detail">image detail</string>
+    <string name="bookbtn">book</string>
+    <string name="title_activity_maps">Map</string>
 
 </resources>

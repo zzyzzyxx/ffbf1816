@@ -58,6 +58,7 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 choosePicture();
+
             }
         });
         back = findViewById(R.id.btn_back);

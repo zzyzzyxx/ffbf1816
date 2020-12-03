@@ -17,16 +17,25 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
+
 public class AddEatery extends AppCompatActivity {
     EditText name, desc;
     Button save;
+
     // Database reference object
     DatabaseReference dbref;
     ImageView im_add;
@@ -54,10 +63,52 @@ public class AddEatery extends AppCompatActivity {
                 if(name.getText().length() > 0 && desc.getText().length() >0 ) //
                 {
                     // use db ref to save
-                    Eatery eatery = new Eatery(name.getText().toString(), desc.getText().toString(),url); //
-                    dbref.child(dbref.push().getKey()).setValue(eatery); //
-                    Toast.makeText(AddEatery.this, "Entry saved", Toast.LENGTH_SHORT).show();
+                    Eatery eatery = new Eatery(name.getText().toString(), desc.getText().toString(), url, "Foodstall");
+                    //checking if foodstall already exists
+                    final ArrayList<Eatery> eateryList  = new ArrayList<>();
+                    Query dbref_check = FirebaseDatabase.getInstance()
+                            .getReference("_eateries_").orderByChild("name").equalTo(name.getText().toString());
+                    dbref_check.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            for(DataSnapshot dss: snapshot.getChildren()){
+                                eateryList.add(dss.getValue(Eatery.class));
+                            }
+                            //if the entry does not exists in database it is saved
+                            if(eateryList.size() == 0){
+                                dbref.child(dbref.push().getKey()).setValue(eatery); //
+                                Toast.makeText(AddEatery.this, "Entry saved", Toast.LENGTH_LONG).show();
+                            }
+                            else if(eateryList.size() !=0){
+                                boolean exists = false;
+                                for(int i = 0; i < eateryList.size(); i++){
+                                    if(name.getText().toString().compareToIgnoreCase(eateryList.get(i).getName()) == 0){
+                                        exists = true;
+                                    }
+                                }
+                                if(exists == false){
+                                    dbref.child(dbref.push().getKey()).setValue(eatery); //
+                                    Toast.makeText(AddEatery.this, "Entry saved", Toast.LENGTH_LONG).show();
+                                }
+                                else{
+                                    Toast.makeText(AddEatery.this, "Foodstall of that name already exists.", Toast.LENGTH_LONG).show();
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
+
+
+
+//                    dbref.child(dbref.push().getKey()).setValue(eatery); //
+//                    Toast.makeText(AddEatery.this, "Entry saved", Toast.LENGTH_SHORT).show();
                 }
+
             }
         });
 

@@ -93,7 +93,7 @@ public class LoginAndRegistration extends AppCompatActivity implements View.OnCl
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    //redirect to User profile
+
                     startActivity( new Intent(LoginAndRegistration.this, Choice.class));
                 }else{
                     Toast.makeText(LoginAndRegistration.this, "Failed to login!", Toast.LENGTH_LONG).show();
