@@ -35,7 +35,7 @@ import com.squareup.picasso.Picasso;
 import java.io.File;
 import java.util.UUID;
 
-public class ProfileActivity extends AppCompatActivity {
+public class    ProfileActivity extends AppCompatActivity {
     private Button logout, back;
     private ImageView profilepic;
     private FirebaseUser user;
@@ -136,9 +136,9 @@ public class ProfileActivity extends AppCompatActivity {
 
 
         final String randomKey = UUID.randomUUID().toString();
-        StorageReference riversRef = storageReference.child("images/" + randomKey);
+        StorageReference sRef = storageReference.child("images/" + randomKey);
 
-        riversRef.putFile(imageUri)
+        sRef.putFile(imageUri)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {

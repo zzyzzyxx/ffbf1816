@@ -24,7 +24,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
-public class UploadImage extends AppCompatActivity {
+public class    UploadImage extends AppCompatActivity {
     ImageView image;
     Button btn_upload;
     Uri image_path;

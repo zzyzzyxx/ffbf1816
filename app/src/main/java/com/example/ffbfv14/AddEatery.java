@@ -95,18 +95,10 @@ public class AddEatery extends AppCompatActivity {
                                 }
                             }
                         }
-
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
-
                         }
                     });
-
-
-
-
-//                    dbref.child(dbref.push().getKey()).setValue(eatery); //
-//                    Toast.makeText(AddEatery.this, "Entry saved", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -118,7 +110,5 @@ public class AddEatery extends AppCompatActivity {
                 startActivity(new Intent(AddEatery.this, UploadImage.class));
             }
         });
-
     }
-
 }

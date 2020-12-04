@@ -116,18 +116,21 @@ public class RegistrationAndLogin extends AppCompatActivity implements View.OnCl
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){
-                                        Toast.makeText(RegistrationAndLogin.this, "User has been registered successfully!", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(RegistrationAndLogin.this,
+                                                "User has been registered successfully!", Toast.LENGTH_LONG).show();
                                         progressBar.setVisibility(View.GONE);
 
                                         //redirect to Login activity
                                     }else{
-                                        Toast.makeText(RegistrationAndLogin.this, "Registration failed. Try again!", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(RegistrationAndLogin.this,
+                                                "Registration failed. Try again!", Toast.LENGTH_SHORT).show();
                                         progressBar.setVisibility(View.GONE);
                                     }
                                 }
                             });
                         }else{
-                            Toast.makeText(RegistrationAndLogin.this, "Registration failed. Try again!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegistrationAndLogin.this,
+                                    "Registration failed. Try again!", Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.GONE);
                         }
                     }
